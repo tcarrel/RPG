@@ -24,7 +24,12 @@ trade.
 
 
 Eventually, I may also need someone who can make some sound effects, but I
-should be able to compose music on my own.
+should be able to compose music on my own, but I'm willing to accept other's
+work.
+
+
+Since I'm the only person working on this project right now, please just submit
+an issue if you're interested.
 
 
 ==DEVELOPMENT LOG==============================================================
