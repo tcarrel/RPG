@@ -23,7 +23,16 @@ artistic skill needs some programming work done, I'd willing to do that as a
 trade.
 
 
-==DEVELOPMENT NOTES============================================================
+Eventually, I may also need someone who can make some sound effects, but I
+should be able to compose music on my own.
+
+
+==DEVELOPMENT LOG==============================================================
+
+
+(26/03/2018) Stepping away from the game for a bit to work on a map editor to
+work with it.  That code is largely copied from this code.  The repo for that
+is <[https://github.com/tcarrel/RPG_map_editor](https://github.com/tcarrel/RPG_map_editor)>.
 
 
 (21/03/2018) I'm not very good a making character sprites...  For now, I'm
