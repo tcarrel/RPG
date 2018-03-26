@@ -82,6 +82,14 @@ void Selectable_List::add_text( const Uint8_t_String& u8str, int return_val )
 
 
 
+void Selectable_List::set_btn_rv( int start, int cancel )
+{
+    start_btn_return_val_ = start;
+    cancel_btn_return_val_ = cancel;
+}
+
+
+
 void Selectable_List::update( void*, const unsigned& )
 {
     update_text();
@@ -106,10 +114,14 @@ int Selectable_List::command( Control_enum_t control )
         up();
         update_text();
         break;
+    case CTRL_B:
+        return cancel_btn_return_val_;
+    case CTRL_START:
+        return start_btn_return_val_;
     default:
         ;
     }
-    return MENU_RETURN_VALUE__NO_RETURN;
+    return void__MENU_RETURN_VALUE__;
 }
 
 

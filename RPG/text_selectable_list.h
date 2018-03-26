@@ -26,6 +26,8 @@ public:
     void add_text( const string&, int );
     void add_text( const Uint8_t_String&, int );
 
+    void set_btn_rv( int, int );
+
     void update( void* = NULL, const unsigned& = 0 );
     int command( Control_enum_t );
     Box_Contents_enum_t type( void );
@@ -37,11 +39,13 @@ private:
     void down( void );
     void up( void );
 
-    unsigned              spacing_;
-    unsigned              selected_;
-    bool                  active_;
+    unsigned               spacing_;
+    unsigned               selected_;
+    bool                   active_;
 
     vector<Line_of_Text*>  selection_;
     vector<int>            return_values_;
-
+    
+    int                    cancel_btn_return_val_;
+    int                    start_btn_return_val_;
 };

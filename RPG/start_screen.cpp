@@ -143,17 +143,21 @@ void Start_Screen::do_controls( unsigned u )
         {
         case CTRL_UP:
             up();
-            break;
+            return;
         case CTRL_DOWN:
             down();
-            break;
+            return;
         case CTRL_A:
         case CTRL_SELECT:
         case CTRL_START:
             select();
-            break;
+            return;
+        case CTRL_B:
+            conf_quit();
+            needs_redraw_ = true; 
+            return;
         default:
-            break;
+            ;
         }
     }
 }

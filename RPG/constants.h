@@ -31,7 +31,7 @@ const int  JOY_DEAD_ZONE = 9000;
 #define GAME_CONTROLLER_MAPPING_DATABASE_FILE_PATH \
 "Settings\\gamecontrollerdb.txt"
 #define KEYBOARD_MAPPING_SETTINGS_FILE_PATH \
-"Settings\\keyboard.mapping.bin"
+"Settings\\controller.mapping.bin"
 
 #define TEXT_CHARACTER_WIDTH (32)
 #define TEXT_CHARACTER_HEIGHT (32)
@@ -45,11 +45,11 @@ const int  JOY_DEAD_ZONE = 9000;
 /**
 *   Image paths.
 */
-#define TEXT_NORMAL_SPRITE_SHEET_FILENAME "Graphics\\text_normal.bmp"
-#define TEXT_GRAYED_SPRITE_SHEET_FILENAME "Graphics\\text_grayed.bmp"
-#define TEXT_HIGHLIGHT_SPRITE_SHEET_FILENAME "Graphics\\text_highlight.bmp"
+#define TEXT_NORMAL_SPRITE_SHEET_FILENAME "Graphics\\text_normal.png"
+#define TEXT_GRAYED_SPRITE_SHEET_FILENAME "Graphics\\text_grayed.png"
+#define TEXT_HIGHLIGHT_SPRITE_SHEET_FILENAME "Graphics\\text_highlight.png"
 #define START_SCREEN_BACKGROUND_IMAGE_FILENAME \
-        "Graphics\\start_screen_image.bmp"
+        "Graphics\\start_screen_image.png"
 
 // Gameplay info. /////////////////////////////////////////////////////////////
 
@@ -216,7 +216,7 @@ enum Menu_Return_Values_enum_t
     MENU_UNSELECTABLE_ITEM = 0x80000000,
 
     MENU_RETURN_VALUE__NO_VALUES_TO_BE_USED,
-    MENU_RETURN_VALUE__NO_RETURN,
+    void__MENU_RETURN_VALUE__,
 
     MENU_RETURN_VALUE__NO = 0,
     MENU_RETURN_VALUE__YES,
@@ -263,20 +263,73 @@ enum Character_ID_t
 
 
 
-enum Item_Type_t
+enum Base_Item_Type_t
 {
-    ITEM_KEY_ITEM,
-    ITEM_CONSUMABLE = 0x01,
-    ITEM_EQUIPABLE  = 0x01 << 1,
-    ITEM_WEAPON     = 0x01 << 2,
-    ITEM_ARMOR      = 0x01 << 3,
-    ITEM_SWORD      = 0x01 << 4,
-    ITEM_HAMMER     = 0x01 << 5
+    ITEM_CONSUMABLE      = 1,
+    ITEM_EQUIPABLE       = 1 <<  1,
+    ITEM_WEAPON          = 1 <<  2,
+    ITEM_ARMOR           = 1 <<  3,
+    ITEM_ACCESORY        = 1 <<  4,
+    ITEM_KEY_ITEM        = 0x80000000,
+
+    ALL_ITEM_TYPES       = 6
 };
 
 
 
-enum Item_ID_t
+enum Weapon_Handedness_t
+{
+    WEAPON_1_HANDED = 1 << 3,
+    WEAPON_HANDEDNESS_MASK = WEAPON_1_HANDED
+};
+
+
+
+enum Weapon_Range_t
+{
+    WEAPON_SHORT_RANGE = 1 << 4,
+    WEAPON_MEDIUM_RANGE = 1 << 5,
+    WEAPON_LONG_RANGE = 1 << 6,
+    WEAPON_SHORT_AND_MEDIUM_RANGE = WEAPON_SHORT_RANGE | WEAPON_MEDIUM_RANGE,
+    WEAPON_MEDUM_AND_LONG_RANGE = WEAPON_MEDIUM_RANGE | WEAPON_LONG_RANGE,
+    WEAPON_ALL_RANGE = WEAPON_SHORT_RANGE | WEAPON_MEDUM_AND_LONG_RANGE,
+    WEAPON_RANGE_MASK = WEAPON_ALL_RANGE
+};
+
+
+
+enum Weapon_Type_t
+{
+    WEAPON_UNARMED        = ITEM_WEAPON,
+    WEAPON_SWORD          = 1 << 7 | WEAPON_SHORT_RANGE,
+    WEAPON_SWORD_1H       = WEAPON_SWORD | WEAPON_1_HANDED | WEAPON_SHORT_RANGE,
+    WEAPON_SWORD_2H       = WEAPON_SWORD | WEAPON_SHORT_RANGE,
+    WEAPON_AXE            = 1 << 8,
+    WEAPON_AXE_1H         = WEAPON_AXE | WEAPON_1_HANDED | WEAPON_SHORT_RANGE,
+    WEAPON_AXE_2H         = WEAPON_AXE | WEAPON_SHORT_RANGE,
+    WEAPON_BOW            = 1 << 9,
+    WEAPON_BOW_2H         = WEAPON_BOW | WEAPON_MEDUM_AND_LONG_RANGE,
+    WEAPON_HAMMER         = 1 << 10,
+    WEAPON_HAMMER_2H      = WEAPON_HAMMER | WEAPON_SHORT_RANGE,
+    WEAPON_KNIFE          = 1 << 11,
+    WEAPON_KNIFE_1H       = WEAPON_KNIFE | WEAPON_1_HANDED | WEAPON_SHORT_RANGE,
+    WEAPON_SPEAR          = 1 << 12,
+    WEAPON_SPEAR_2H       = WEAPON_SPEAR | WEAPON_MEDIUM_RANGE,
+    WEAPON_CLUB           = 1 << 13,
+    WEAPON_CLUB_1H        = WEAPON_CLUB | WEAPON_1_HANDED | WEAPON_SHORT_RANGE,
+    WEAPON_CLUB_2H        = WEAPON_CLUB | WEAPON_SHORT_RANGE,
+    WEAPON_BOOMERANG      = 1 << 14,
+    WEAPON_BOOMERANG_1H   = WEAPON_BOOMERANG | WEAPON_MEDUM_AND_LONG_RANGE,
+    WEAPON_STAFF          = 1 << 15,
+    WEAPON_STAFF_2H       = WEAPON_STAFF ,
+    WEAPON_WAND_1H        = WEAPON_STAFF | WEAPON_1_HANDED,
+
+    ALL_WEAPON_TYPES
+};
+
+
+
+enum Item_t
 {
 
 };

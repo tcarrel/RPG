@@ -62,4 +62,6 @@ protected:
     bool fixed_width_;
 
     void update_width( void );
+
+
 };

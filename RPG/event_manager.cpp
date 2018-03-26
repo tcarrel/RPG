@@ -51,24 +51,42 @@ Event_Manager::Event_Manager( Console* c ) :
 
     for( int i = 0; i < controller_qty; i++ )
     {
-        if( !SDL_IsGameController( i ) )
+        gamepad_ = SDL_JoystickOpen( i );
+        if( gamepad_ )
         {
-            gamepad_ = SDL_JoystickOpen( i );
-            console_->no_error(
-                "Event_Manager",
-                "Joystick attached.",
-                "Joystick attached: " + string( SDL_JoystickName( gamepad_ ) ) );
-            break;
+            if( !SDL_IsGameController( i ) )
+            {
+
+                console_->no_error(
+                    "Event_Manager",
+                    "Joystick attached.",
+                    "Joystick attached: " + string( SDL_JoystickName( gamepad_ ) ) );
+                break;
+            }
+            else
+            {
+                gamepad_ = SDL_GameControllerGetJoystick( SDL_GameControllerOpen( i ) );
+                console_->vb_variable_value( "Event_Manager", "gamepad_", gamepad_ );
+                console_->no_error(
+                    "Event_Manager",
+                    "Controller attached.",
+                    "Controller Attached: " + string( SDL_JoystickName( gamepad_ ) ) );
+                break;
+            }
         }
         else
         {
-            gamepad_ = SDL_GameControllerGetJoystick( SDL_GameControllerOpen( i ) );
-            console_->vb_variable_value( "Event_Manager", "gamepad_", gamepad_ );            
-            console_->no_error(
-                "Event_Manager",
-                "Controller attached.",
-                "Controller Attached: " + string( SDL_JoystickName( gamepad_ ) ) );
-            break;
+            char long_[ 256 ];
+            snprintf(
+                long_,
+                256,
+                "Could not open joystick #%i, %s",
+                i,
+                SDL_GetError() );
+            console_->error(
+                "Event _Manager",
+                "Could not open joystick.",
+                long_ );
         }
     }
 
@@ -90,33 +108,25 @@ Event_Manager::Event_Manager( Console* c ) :
         key_to_ctrl[ i ] = CTRL_NULL;
     }
 
-    joy_to_ctrl[ JOY_A_BUTTON ] = CTRL_A;
-    joy_to_ctrl[ JOY_B_BUTTON ] = CTRL_B;
-    joy_to_ctrl[ JOY_X_BUTTON ] = CTRL_X;
-    joy_to_ctrl[ JOY_Y_BUTTON ] = CTRL_Y;
-    joy_to_ctrl[ JOY_UP ]       = CTRL_UP;
-    joy_to_ctrl[ JOY_DOWN ]     = CTRL_DOWN;
-    joy_to_ctrl[ JOY_LEFT ]     = CTRL_LEFT;
-    joy_to_ctrl[ JOY_RIGHT ]    = CTRL_RIGHT;
-    joy_to_ctrl[ JOY_START ]    = CTRL_START;
-    joy_to_ctrl[ JOY_SELECT ]   = CTRL_SELECT;
-    joy_to_ctrl[ JOY_L_BUTTON ] = CTRL_L;
-    joy_to_ctrl[ JOY_R_BUTTON ] = CTRL_R;
-
     SDL_RWops* file = SDL_RWFromFile(
         KEYBOARD_MAPPING_SETTINGS_FILE_PATH,
         "rb" );
+
     if( !file )
     {
         // File does not exist, set default keyboard mapping and write to file.
         key_to_ctrl[ SDL_SCANCODE_UP ]    = CTRL_UP;
+        key_to_ctrl[ SDL_SCANCODE_KP_8 ]  = CTRL_UP;
         key_to_ctrl[ SDL_SCANCODE_DOWN ]  = CTRL_DOWN;
+        key_to_ctrl[ SDL_SCANCODE_KP_2 ]  = CTRL_DOWN;
         key_to_ctrl[ SDL_SCANCODE_LEFT ]  = CTRL_LEFT;
+        key_to_ctrl[ SDL_SCANCODE_KP_4 ]  = CTRL_LEFT;
         key_to_ctrl[ SDL_SCANCODE_RIGHT ] = CTRL_RIGHT;
+        key_to_ctrl[ SDL_SCANCODE_KP_6 ]  = CTRL_RIGHT;
 
         key_to_ctrl[ SDL_SCANCODE_SPACE ]    = CTRL_A;
         key_to_ctrl[ SDL_SCANCODE_KP_SPACE ] = CTRL_A;
-        key_to_ctrl[ SDL_SCANCODE_LCTRL ]    = CTRL_B;
+        key_to_ctrl[ SDL_SCANCODE_LSHIFT ]   = CTRL_B;
 
         key_to_ctrl[ SDL_SCANCODE_X ] = CTRL_X;
         key_to_ctrl[ SDL_SCANCODE_C ] = CTRL_Y;
@@ -136,17 +146,36 @@ Event_Manager::Event_Manager( Console* c ) :
         key_to_ctrl[ SDL_SCANCODE_F4 ]    = CTRL_F4;
         key_to_ctrl[ SDL_SCANCODE_PAUSE ] = CTRL_START;
 
+
+
+
+        joy_to_ctrl[ JOY_A_BUTTON ] = CTRL_A;
+        joy_to_ctrl[ JOY_B_BUTTON ] = CTRL_B;
+        joy_to_ctrl[ JOY_X_BUTTON ] = CTRL_X;
+        joy_to_ctrl[ JOY_Y_BUTTON ] = CTRL_Y;
+        joy_to_ctrl[ JOY_UP ] = CTRL_UP;
+        joy_to_ctrl[ JOY_DOWN ] = CTRL_DOWN;
+        joy_to_ctrl[ JOY_LEFT ] = CTRL_LEFT;
+        joy_to_ctrl[ JOY_RIGHT ] = CTRL_RIGHT;
+        joy_to_ctrl[ JOY_START ] = CTRL_START;
+        joy_to_ctrl[ JOY_SELECT ] = CTRL_SELECT;
+        joy_to_ctrl[ JOY_L_BUTTON ] = CTRL_L;
+        joy_to_ctrl[ JOY_R_BUTTON ] = CTRL_R;
+
+
         console_->vb_only_no_err(
             "SDL/RW",
             "No saved keyboard mapping exists, " 
             "using default and\n\t\t\tsaving to file." );
-        file = SDL_RWFromFile( "keyboard.mapping.bin", "wb" );
+        file = SDL_RWFromFile( KEYBOARD_MAPPING_SETTINGS_FILE_PATH, "wb" );
         SDL_RWwrite( file, key_to_ctrl, sizeof( int ), ALL_KEYS );
+        SDL_RWwrite( file, joy_to_ctrl, sizeof( int ), ALL_JOYS );
     }
     else
     {
         console_->vb_only_no_err( "SDL/RW", "Loading keyboard mapping from file." );
         SDL_RWread( file, key_to_ctrl, sizeof( int ), ALL_KEYS );
+        SDL_RWread( file, joy_to_ctrl, sizeof( int ), ALL_JOYS );
     }
     SDL_RWclose( file );
     file = NULL;

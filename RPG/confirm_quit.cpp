@@ -27,6 +27,7 @@ Confirm_Quit::Confirm_Quit(
     yes_no->add_text(
         "   Yes",
         MENU_RETURN_VALUE__YES );
+    yes_no->set_btn_rv( MENU_RETURN_VALUE__YES, MENU_RETURN_VALUE__NO );
     yes_no->activate();
 
     SDL_Rect coords = { ( TEXT_COLUMNS - 34 ) / 2,( TEXT_ROWS - 9 ) / 2, 34, 9 };
@@ -76,11 +77,12 @@ void Confirm_Quit::do_controls( unsigned key )
         {
         case MENU_RETURN_VALUE__NO:
             exit_ = true;
-            break;
+            return;
         case MENU_RETURN_VALUE__YES:
             em_->quit_game();
-            break;
-        default:;
+            return;
+        default:
+            ;
         }
     }
 }
