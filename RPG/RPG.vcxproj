@@ -250,22 +250,22 @@
     <None Include="Graphics\text_highlight.xcf" />
     <None Include="Graphics\text_normal.xcf" />
     <None Include="packages.config" />
-    <None Include="Settings\keyboard.mapping.bin" />
+    <None Include="Settings\controller.mapping.bin" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Graphics\henrietta.bmp" />
     <Image Include="Graphics\Icon.bmp" />
     <Image Include="Graphics\skin-colors-palette.jpg" />
     <Image Include="Graphics\splash1_test.bmp" />
+    <Image Include="Graphics\splash1_test.png" />
     <Image Include="Graphics\splash2_test.bmp" />
-    <Image Include="Graphics\start_screen_image.bmp" />
+    <Image Include="Graphics\splash2_test.png" />
+    <Image Include="Graphics\start_screen_image.png" />
+    <Image Include="Graphics\tech_splash.png" />
     <Image Include="Graphics\test_terrain.bmp" />
-    <Image Include="Graphics\text_grayed.bmp" />
-    <Image Include="Graphics\text_highlight.bmp" />
-    <Image Include="Graphics\text_normal.bmp" />
-    <Image Include="splash1_test.bmp" />
-    <Image Include="splash2_test.bmp" />
-    <Image Include="tech_splash.bmp" />
+    <Image Include="Graphics\text_grayed.png" />
+    <Image Include="Graphics\text_highlight.png" />
+    <Image Include="Graphics\text_normal.png" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="SDL2_mixer.lib" />

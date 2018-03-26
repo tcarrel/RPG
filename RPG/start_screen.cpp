@@ -15,7 +15,7 @@ Start_Screen::Start_Screen( Event_Manager* em, Window* w, Console* c ) :
     Interface( em, c, w, INTERFACE_START_MENU )
 {
     SDL_Surface* new_image =
-        SDL_LoadBMP( START_SCREEN_BACKGROUND_IMAGE_FILENAME );
+        IMG_Load( START_SCREEN_BACKGROUND_IMAGE_FILENAME );
     if( !new_image )
     {
         char msg[ 256 ];

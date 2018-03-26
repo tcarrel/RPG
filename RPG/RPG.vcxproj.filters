@@ -400,9 +400,6 @@
     <None Include="Graphics\start_screen_image.xcf">
       <Filter>Resource Files\Start Screen</Filter>
     </None>
-    <None Include="Settings\keyboard.mapping.bin">
-      <Filter>Resource Files\Settings</Filter>
-    </None>
     <None Include="Graphics\terrain_tile_sheet_template.xcf">
       <Filter>Resource Files\Graphics\Terrain</Filter>
     </None>
@@ -421,29 +418,11 @@
     <None Include="..\LICENSE.md">
       <Filter>Resource Files\github</Filter>
     </None>
+    <None Include="Settings\controller.mapping.bin">
+      <Filter>Resource Files\Settings</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="splash1_test.bmp">
-      <Filter>Resource Files\Splash Screens</Filter>
-    </Image>
-    <Image Include="splash2_test.bmp">
-      <Filter>Resource Files\Splash Screens</Filter>
-    </Image>
-    <Image Include="tech_splash.bmp">
-      <Filter>Resource Files\Splash Screens</Filter>
-    </Image>
-    <Image Include="Graphics\text_normal.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </Image>
-    <Image Include="Graphics\text_grayed.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </Image>
-    <Image Include="Graphics\text_highlight.bmp">
-      <Filter>Resource Files\Graphics\Text</Filter>
-    </Image>
-    <Image Include="Graphics\start_screen_image.bmp">
-      <Filter>Resource Files\Start Screen</Filter>
-    </Image>
     <Image Include="Graphics\henrietta.bmp">
       <Filter>Resource Files\Graphics\Actros</Filter>
     </Image>
@@ -461,6 +440,27 @@
     </Image>
     <Image Include="Graphics\test_terrain.bmp">
       <Filter>Resource Files\Graphics\Terrain</Filter>
+    </Image>
+    <Image Include="Graphics\text_highlight.png">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\text_grayed.png">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\text_normal.png">
+      <Filter>Resource Files\Graphics\Text</Filter>
+    </Image>
+    <Image Include="Graphics\start_screen_image.png">
+      <Filter>Resource Files\Start Screen</Filter>
+    </Image>
+    <Image Include="Graphics\splash1_test.png">
+      <Filter>Resource Files\Splash Screens</Filter>
+    </Image>
+    <Image Include="Graphics\splash2_test.png">
+      <Filter>Resource Files\Splash Screens</Filter>
+    </Image>
+    <Image Include="Graphics\tech_splash.png">
+      <Filter>Resource Files\Splash Screens</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

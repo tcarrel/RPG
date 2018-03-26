@@ -59,7 +59,8 @@ bool Sprite_Sheet::load( const string& path, transparent_color* color_key )
 
     SDL_Texture* new_texture = NULL;
 
-    SDL_Surface* loaded = SDL_LoadBMP( path.c_str() );
+   // SDL_Surface* loaded = SDL_LoadBMP( path.c_str() );
+    SDL_Surface* loaded = IMG_Load( path.c_str() );
     if( !loaded )
     {
         string long_msg(
