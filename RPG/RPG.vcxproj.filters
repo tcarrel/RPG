@@ -266,6 +266,9 @@
     <ClInclude Include="load_menu.h">
       <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
     </ClInclude>
+    <ClInclude Include="SDL_mixer.h">
+      <Filter>Header Files\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -459,5 +462,8 @@
     <Image Include="Graphics\test_terrain.bmp">
       <Filter>Resource Files\Graphics\Terrain</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="SDL2_mixer.lib" />
   </ItemGroup>
 </Project>
