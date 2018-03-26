@@ -25,7 +25,7 @@ public:
     int    map_width_;
     int    map_height_;
     int*** map_fg_;
-    int*** map_bg_;
+    int**  map_bg_;
 
     //Additional arrays will need to be added for more map features.
     //int*** usable_;
