@@ -388,9 +388,6 @@
     <None Include="Graphics\text_normal.xcf">
       <Filter>Resource Files\Graphics\Text</Filter>
     </None>
-    <None Include="..\LICENSE.md5">
-      <Filter>Resource Files\github</Filter>
-    </None>
     <None Include="Graphics\text_grayed.xcf">
       <Filter>Resource Files\Graphics\Text</Filter>
     </None>
@@ -416,6 +413,9 @@
       <Filter>Resource Files\Graphics\Terrain</Filter>
     </None>
     <None Include="..\README.md">
+      <Filter>Resource Files\github</Filter>
+    </None>
+    <None Include="..\LICENSE.md">
       <Filter>Resource Files\github</Filter>
     </None>
   </ItemGroup>
