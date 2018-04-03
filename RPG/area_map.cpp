@@ -5,43 +5,57 @@
 
 
 /*static*/ unsigned Area_Map::unassigned_id_ = 0;
+/*static*/ const int Area_Map::MAX_VERTICAL  = 512;
+/*static*/ const int Area_Map::MAX_HORIZONAL = 512;
+/*static*/ const int Area_Map::MAX_HEIGHT    = 4;
 
 
 
-Area_Map::Area_Map( int layers, int width, int height ) :
-    map_layers_( layers ), map_width_( width ), map_height_( height )
+Area_Map::Area_Map(
+    int layers,
+    int width,
+    int height,
+    const Uint8_t_String& name ) :
+    height_( layers ), horizontal_size_( width ), vertical_size_( height ), name_(name)
 {
     id_ = unassigned_id_++;
 
-    map_fg_ = new int**[ layers ];
-    map_bg_ = new int*[ width ];
+    bg_ = new int**[ layers ];
+    fg_ = new int*[ width ];
 
     for( int i = 0; i < layers; i++ )
     {
-        map_fg_[ i ] = new int*[ width ];
+        bg_[ i ] = new int*[ width ];
         for( int j = 0; j < width; j++ )
         {
-            map_fg_[ i ][ j ] = new int[ height ];
-            map_bg_[ j ] = new int[ height ];
+            bg_[ i ][ j ] = new int[ height ];
+            fg_[ j ] = new int[ height ];
         }
     }
 }
 
 
 
+const Uint8_t_String & Area_Map::get_name( void )
+{
+    return name_;
+}
+
+
+
 Area_Map::~Area_Map( void )
 {
-    for( int i = 0; i < map_layers_; i++ )
+    for( int i = 0; i < height_; i++ )
     {
-        for( int j = 0; j < map_width_; j++ )
+        for( int j = 0; j < horizontal_size_; j++ )
         {
-            delete[] map_fg_[ i ][ j ];
+            delete[] bg_[ i ][ j ];
         }
-        delete[] map_fg_[ i ];
-        delete[] map_bg_[ i ];
+        delete[] fg_[ i ];
+        delete[] bg_[ i ];
     }
-    delete[] map_fg_;
-    map_fg_ = NULL;
-    delete[] map_bg_;
-    map_bg_ = NULL;
+    delete[] fg_;
+    fg_ = NULL;
+    delete[] bg_;
+    bg_ = NULL;
 }

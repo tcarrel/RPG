@@ -35,18 +35,21 @@ Event_Manager::Event_Manager( Console* c ) :
 
     Interface::register_ctrl( ctrl_current_, ctrl_previous_ );
 
+    load_mappings();
+
     //Setup gamepad, if connected.
     int controller_qty = SDL_NumJoysticks();
-    console_->vb_variable_value( "Event_Manager", "controller_qty", controller_qty );
+    console_->vb_variable_value(
+        "Event_Manager",
+        "controller_qty",
+        controller_qty );
 
     if( controller_qty < 0 )
     {
-        console_->error( "SDL2 (Gamepad)", "Gamepad enumeration error.", SDL_GetError() );
-    }
-
-    if( controller_qty > 0 )
-    {
-        load_mappings();
+        console_->error(
+            "SDL2 (Gamepad)",
+            "Gamepad enumeration error.",
+            SDL_GetError() );
     }
 
     for( int i = 0; i < controller_qty; i++ )
@@ -60,17 +63,23 @@ Event_Manager::Event_Manager( Console* c ) :
                 console_->no_error(
                     "Event_Manager",
                     "Joystick attached.",
-                    "Joystick attached: " + string( SDL_JoystickName( gamepad_ ) ) );
+                    "Joystick attached: " +
+                    string( SDL_JoystickName( gamepad_ ) ) );
                 break;
             }
             else
             {
-                gamepad_ = SDL_GameControllerGetJoystick( SDL_GameControllerOpen( i ) );
-                console_->vb_variable_value( "Event_Manager", "gamepad_", gamepad_ );
+                gamepad_ = SDL_GameControllerGetJoystick(
+                    SDL_GameControllerOpen( i ) );
+                console_->vb_variable_value(
+                    "Event_Manager",
+                    "gamepad_",
+                    gamepad_ );
                 console_->no_error(
                     "Event_Manager",
                     "Controller attached.",
-                    "Controller Attached: " + string( SDL_JoystickName( gamepad_ ) ) );
+                    "Controller Attached: " +
+                    string( SDL_JoystickName( gamepad_ ) ) );
                 break;
             }
         }
@@ -80,11 +89,11 @@ Event_Manager::Event_Manager( Console* c ) :
             snprintf(
                 long_,
                 256,
-                "Could not open joystick #%i, %s",
+                "Could not open joystick #%i\nX\t\t\t%s",
                 i,
                 SDL_GetError() );
             console_->error(
-                "Event _Manager",
+                "Event_Manager",
                 "Could not open joystick.",
                 long_ );
         }
@@ -95,7 +104,9 @@ Event_Manager::Event_Manager( Console* c ) :
         SDL_JoystickGUID guid = SDL_JoystickGetGUID( gamepad_ );
         char pszGUID[ 34 ];
         SDL_JoystickGetGUIDString( guid, pszGUID, 34 );
-        console_->vb_only_no_err( "SDL2/Joystick", "GUID: " + string( pszGUID ) );
+        console_->vb_only_no_err(
+            "SDL2/Joystick",
+            "GUID: " + string( pszGUID ) );
     }
 
 
@@ -173,7 +184,9 @@ Event_Manager::Event_Manager( Console* c ) :
     }
     else
     {
-        console_->vb_only_no_err( "SDL/RW", "Loading keyboard mapping from file." );
+        console_->vb_only_no_err(
+            "SDL/RW",
+            "Loading keyboard mapping from file." );
         SDL_RWread( file, key_to_ctrl, sizeof( int ), ALL_KEYS );
         SDL_RWread( file, joy_to_ctrl, sizeof( int ), ALL_JOYS );
     }
@@ -270,7 +283,6 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
     {
     case INTERFACE_START_MENU:
         ixs_[ INTERFACE_START_MENU ] = (Start_Screen*)ix;
-  //      ixs_[ INTERFACE_START_MENU ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Start menu interface, registered." );
@@ -281,7 +293,6 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_MAP:
         ixs_[ INTERFACE_MAP ] = (Game_Map*)ix;
- //       ixs_[ INTERFACE_MAP ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "On-Map interface, registered." );
@@ -292,7 +303,6 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_MENU:
         ixs_[ INTERFACE_MENU ] = (Menu*)ix;
-  //      ixs_[ INTERFACE_MENU ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "In-game menu interface, registered." );
@@ -303,7 +313,6 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_COMBAT:
         ixs_[ INTERFACE_COMBAT ] = (Combat*)ix;
- //       ixs_[ INTERFACE_COMBAT ]->register_ctrl(  ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Combat interface, registered." );
@@ -314,7 +323,6 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_PAUSE:
         ixs_[ INTERFACE_PAUSE ] = (Pause*)ix;
-   //     ixs_[ INTERFACE_PAUSE ]->register_ctrl(  ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Pause screen interface, registered." );
@@ -325,7 +333,6 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_LOAD_MENU:
         ixs_[ INTERFACE_LOAD_MENU ] = (Load_Menu*)ix;
-    //    ixs_[ INTERFACE_LOAD_MENU ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Save/Load interface, registered." );
@@ -336,7 +343,6 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_ITEM:
         ixs_[ INTERFACE_ITEM ] = (Item_Creation*)ix;
-  //      ixs_[ INTERFACE_ITEM ]->register_ctrl( ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "Item creation interface, registered." );
@@ -347,7 +353,6 @@ bool Event_Manager::register_interface( Interface* ix, unsigned ixe )
         break;
     case INTERFACE_GAME_OVER:
         ixs_[ INTERFACE_GAME_OVER ] = (Game_Over*)ix;
- //       ixs_[ INTERFACE_GAME_OVER ]->register_ctrl(  ctrl_current_, ctrl_previous_ );
         console_->vb_only_no_err(
             "Event_Manager",
             "\"Game Over\" screen interface, registered." );
@@ -541,6 +546,8 @@ void Event_Manager::all_registered( void )
 
     if( all )
     {
-        console_->vb_only_no_err( "Event_Manager", "All interfaces registered." );
+        console_->vb_only_no_err(
+            "Event_Manager",
+            "All interfaces registered." );
     }
 }
