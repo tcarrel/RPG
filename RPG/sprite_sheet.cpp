@@ -8,6 +8,7 @@
 /*static*/ SDL_Renderer* Sprite_Sheet::renderer_ = NULL;
 /*static*/ int Sprite_Sheet::offset_x_ = 0;
 /*static*/ int Sprite_Sheet::offset_y_ = 0;
+/*static*/ float Sprite_Sheet::scale_factor_ = 1;
 
 
 

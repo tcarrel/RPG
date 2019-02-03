@@ -52,13 +52,13 @@ Start_Screen::Start_Screen( Event_Manager* em, Window* w, Console* c ) :
             0, 0, TEXT_HIGHLIGHT_TYPE_BRIGHT, "New Game" ) );
     options_.add(
         new Line_of_Text(
-            0, 48, TEXT_HIGHLIGHT_TYPE_NORMAL, "Continue" ) );
+            0, Scaler::scalei(48), TEXT_HIGHLIGHT_TYPE_NORMAL, "Continue" ) );
     options_.add(
         new Line_of_Text(
-            0, 96, TEXT_HIGHLIGHT_TYPE_NORMAL, "Settings" ) );
+            0, Scaler::scalei(96), TEXT_HIGHLIGHT_TYPE_NORMAL, "Settings" ) );
     options_.add(
         new Line_of_Text(
-            0, 144, TEXT_HIGHLIGHT_TYPE_NORMAL, "Quit" ) );
+            0, Scaler::scalei(144), TEXT_HIGHLIGHT_TYPE_NORMAL, "Quit" ) );
 
     exit_interface_loop_ = false;
 }

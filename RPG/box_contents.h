@@ -6,6 +6,7 @@
 
 class Text;
 class Passage;
+class Scaler;
 
 
 

@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 
-/*static*/ float Scaler::factor_ = 1;
+/*static*/ float Scaler::factor_ = 1.0;
 
 
 
@@ -22,7 +22,7 @@
 */
 /*static*/ int Scaler::scalei( const int& v )
 {
-    return (int)( (float)v * factor_ );
+    return (int)ceil( (float)v * factor_ );
 }
 
 

@@ -43,6 +43,7 @@ protected:
     SDL_Texture* sheet_;
     int width_;
     int height_;
+	static float scale_factor_;
 
     bool ready_;
 

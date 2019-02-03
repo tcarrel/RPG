@@ -107,8 +107,8 @@ void Box_Contents::add_text( const Uint8_t_String& u8str, int )
 */
 void Box_Contents::set_position( int x, int y )
 {
-    size_.x = x;
-    size_.y = y;
+	size_.x = x;//Scaler::scalei(x);
+	size_.y = y;//Scaler::scalei(y);
 }
 
 
@@ -118,7 +118,7 @@ void Box_Contents::set_position( int x, int y )
 */
 void Box_Contents::set_width( int w )
 {
-    size_.w = w;
+	size_.w = w;//Scaler::scalei(w);
 }
 
 

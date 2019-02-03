@@ -45,8 +45,8 @@ Line_of_Text::Line_of_Text(
     const Uint8_t_String& ui8s ) :
     text( ui8s )
 {
-    x = xpos;
-    y = ypos;
+    x = Scaler::scalei(xpos);
+    y = Scaler::scalei(ypos);
     hl = hi;
 }
 
@@ -59,8 +59,8 @@ Line_of_Text::Line_of_Text(
     const char cc[] ) :
     text(cc)
 {
-    x = xpos;
-    y = ypos;
+	x = xpos;//Scaler::scalei(xpos);
+	y = ypos;//Scaler::scalei(ypos);
     hl = hi;
 }
 

@@ -276,6 +276,9 @@ void Window::set_scale( float w, float h )
             borders_[ i ].x = 0;
             borders_[ i ].y = 0;
         }
+
+		Scaler::init(scale_factor_);
+
         return;
     }
 
@@ -312,6 +315,8 @@ void Window::set_scale( float w, float h )
         console_->vb_variable_value( "Window", "borders_[0]", borders_[ 0 ] );
         console_->vb_variable_value( "Window", "borders_[1]", borders_[ 1 ] );
 
+		Scaler::init(scale_factor_);
+
         return;
     }
 
@@ -341,6 +346,8 @@ void Window::set_scale( float w, float h )
     console_->vb_variable_value( "Window", "draw_offset.y", draw_offset.y_ );
     console_->vb_variable_value( "Window", "borders_[0]", borders_[ 0 ] );
     console_->vb_variable_value( "Window", "borders_[1]", borders_[ 1 ] );
+
+	Scaler::init(scale_factor_);
 
     return;
 }

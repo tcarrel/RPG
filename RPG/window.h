@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-
+class Scaler;
 
 /**
 *   A wrapper for the SDL Window.

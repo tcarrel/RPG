@@ -22,7 +22,7 @@ Name_Character::Name_Character(
     cursor_is_on_ = true;
     cursor_ = LTR_ok;
     box_ = {
-    calculate_in_pixels__x_pos( 2 ) + Sprite_Sheet::get_x_offset(),
+        calculate_in_pixels__x_pos( 2 ) + Sprite_Sheet::get_x_offset(),
         calculate_in_pixels__y_pos( 2 ) + Sprite_Sheet::get_y_offset(),
         calculate_in_pixels__width( TEXT_COLUMNS - 4 ),
         calculate_in_pixels__height( TEXT_ROWS - 4 ) };
@@ -636,7 +636,8 @@ void Name_Character::reset_name( void )
 void Name_Character::render_fill( void )
 {
     SDL_SetRenderDrawColor( renderer_, 0x0, 0x20, 0x3F, 0xCC );
-    SDL_RenderFillRect( renderer_, &box_ );
+	SDL_Rect sb = { Scaler::scalei(box_.x),  Scaler::scalei(box_.y),  Scaler::scalei(box_.w),  Scaler::scalei(box_.h) };
+    SDL_RenderFillRect( renderer_, &sb );
 }
 
 

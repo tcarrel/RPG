@@ -147,28 +147,28 @@ int Text_Box::command( Control_enum_t c )
 
 inline int Text_Box::calculate_in_pixels__x_pos( int x )
 {
-    return ( x * TEXT_CHARACTER_WIDTH ) + TEXT_X_OFFSET;
+    return  ( x * TEXT_CHARACTER_WIDTH ) + TEXT_X_OFFSET;
 }
 
 
 
 inline int Text_Box::calculate_in_pixels__y_pos( int y )
 {
-    return ( y * TEXT_CHARACTER_HEIGHT ) + TEXT_Y_OFFSET;
+    return  ( y * TEXT_CHARACTER_HEIGHT ) + TEXT_Y_OFFSET;
 }
 
 
 
 inline int Text_Box::calculate_in_pixels__width( int w )
 {
-    return w * TEXT_CHARACTER_WIDTH;
+    return  w * TEXT_CHARACTER_WIDTH;
 }
 
 
 
 inline int Text_Box::calculate_in_pixels__height( int h )
 {
-    return h * TEXT_CHARACTER_HEIGHT;
+    return  h * TEXT_CHARACTER_HEIGHT;
 }
 
 
@@ -180,10 +180,10 @@ void Text_Box::render_fill( void )
 {
 
     SDL_Rect fill =
-    { calculate_in_pixels__x_pos( dimensions_.x ) + text_[ 0 ].get_x_offset(),
-      calculate_in_pixels__y_pos( dimensions_.y ) + text_[ 0 ].get_y_offset(),
-      calculate_in_pixels__width( dimensions_.w ),
-      calculate_in_pixels__height( dimensions_.h ) };
+    { Scaler::scalei(calculate_in_pixels__x_pos( dimensions_.x ) + text_[ 0 ].get_x_offset()),
+		Scaler::scalei(calculate_in_pixels__y_pos( dimensions_.y ) + text_[ 0 ].get_y_offset()),
+		Scaler::scalei(calculate_in_pixels__width( dimensions_.w )),
+		Scaler::scalei(calculate_in_pixels__height( dimensions_.h )) };
 
 
     SDL_SetRenderDrawColor(
@@ -277,15 +277,15 @@ void Text_Box::render_border( void )
     // Top and bottom.
     for( int i = 0; i < dimensions_.w; i++ )
     {
-        letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_TOP ].render(
-            calculate_in_pixels__x_pos( dimensions_.x ) +
-            ( i * TEXT_CHARACTER_WIDTH ),
-            calculate_in_pixels__y_pos( dimensions_.y ) -
-            TEXT_CHARACTER_HEIGHT );
+		letter_[TEXT_HIGHLIGHT_TYPE_NORMAL][CHAR_BOX_TOP].render(
+			calculate_in_pixels__x_pos(dimensions_.x) +
+			(i * TEXT_CHARACTER_WIDTH),
+			calculate_in_pixels__y_pos(dimensions_.y) -
+			TEXT_CHARACTER_HEIGHT);
 
         letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_BOTTOM ].render(
             calculate_in_pixels__x_pos( dimensions_.x ) +
-            ( i * TEXT_CHARACTER_WIDTH ),
+			( i * TEXT_CHARACTER_WIDTH ),
             calculate_in_pixels__y_pos( dimensions_.y ) +
             calculate_in_pixels__height( dimensions_.h ) );
     }
@@ -294,14 +294,14 @@ void Text_Box::render_border( void )
     {
         letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_LEFT ].render(
             calculate_in_pixels__x_pos( dimensions_.x ) -
-            TEXT_CHARACTER_WIDTH,
+			TEXT_CHARACTER_WIDTH,
             calculate_in_pixels__y_pos( dimensions_.y ) +
-            ( i * TEXT_ROW_HEIGHT ) );
+			( i * TEXT_ROW_HEIGHT ) );
 
         letter_[ TEXT_HIGHLIGHT_TYPE_NORMAL ][ CHAR_BOX_RIGHT ].render(
             calculate_in_pixels__x_pos( dimensions_.x ) +
             calculate_in_pixels__width( dimensions_.w ),
             calculate_in_pixels__y_pos( dimensions_.y ) +
-            ( i * TEXT_ROW_HEIGHT ) );
+			( i * TEXT_ROW_HEIGHT ) );
     }
 }

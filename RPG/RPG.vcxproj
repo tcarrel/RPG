@@ -240,6 +240,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\LICENSE.md" />
+    <None Include="..\packages\sdl2_mixer.2.0.0\lib\SDL2_mixer.dll">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </None>
     <None Include="..\README.md" />
     <None Include="Graphics\character_sprite_template.xcf" />
     <None Include="Graphics\henrietta.xcf" />
@@ -266,9 +269,6 @@
     <Image Include="Graphics\text_grayed.png" />
     <Image Include="Graphics\text_highlight.png" />
     <Image Include="Graphics\text_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="SDL2_mixer.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

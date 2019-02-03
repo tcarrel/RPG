@@ -121,11 +121,11 @@
     <Filter Include="Resource Files\Graphics\Terrain">
       <UniqueIdentifier>{72aff379-9779-462f-939f-ca8546da8c5d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Graphics\Actros">
-      <UniqueIdentifier>{8868073c-0519-4519-b60f-0d6770d16ff9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Graphics\ZZZ Misc">
       <UniqueIdentifier>{08ebe16c-999c-4c9b-a7e6-92540e59a4b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Graphics\Actors">
+      <UniqueIdentifier>{8868073c-0519-4519-b60f-0d6770d16ff9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -404,10 +404,10 @@
       <Filter>Resource Files\Graphics\Terrain</Filter>
     </None>
     <None Include="Graphics\character_sprite_template.xcf">
-      <Filter>Resource Files\Graphics\Actros</Filter>
+      <Filter>Resource Files\Graphics\Actors</Filter>
     </None>
     <None Include="Graphics\henrietta.xcf">
-      <Filter>Resource Files\Graphics\Actros</Filter>
+      <Filter>Resource Files\Graphics\Actors</Filter>
     </None>
     <None Include="Graphics\test_terrain.xcf">
       <Filter>Resource Files\Graphics\Terrain</Filter>
@@ -421,10 +421,11 @@
     <None Include="Settings\controller.mapping.bin">
       <Filter>Resource Files\Settings</Filter>
     </None>
+    <None Include="..\packages\sdl2_mixer.2.0.0\lib\SDL2_mixer.dll" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Graphics\henrietta.bmp">
-      <Filter>Resource Files\Graphics\Actros</Filter>
+      <Filter>Resource Files\Graphics\Actors</Filter>
     </Image>
     <Image Include="Graphics\Icon.bmp">
       <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
@@ -436,7 +437,7 @@
       <Filter>Resource Files\Graphics\ZZZ Misc</Filter>
     </Image>
     <Image Include="Graphics\skin-colors-palette.jpg">
-      <Filter>Resource Files\Graphics\Actros</Filter>
+      <Filter>Resource Files\Graphics\Actors</Filter>
     </Image>
     <Image Include="Graphics\test_terrain.bmp">
       <Filter>Resource Files\Graphics\Terrain</Filter>
@@ -462,8 +463,5 @@
     <Image Include="Graphics\tech_splash.png">
       <Filter>Resource Files\Splash Screens</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="SDL2_mixer.lib" />
   </ItemGroup>
 </Project>

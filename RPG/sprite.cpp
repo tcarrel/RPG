@@ -106,7 +106,11 @@ void Sprite::render( int x, int y )
 {
     if( sprite_sheet_ )
     {
-        SDL_Rect quad = { x + offset_x_, y + offset_y_, clip_.w, clip_.h };
+        SDL_Rect quad = {
+			Scaler::scalei(x + offset_x_),
+			Scaler::scalei(y + offset_y_),
+			Scaler::scalei(clip_.w),
+			Scaler::scalei(clip_.h) };
         SDL_RenderCopy( renderer_, sprite_sheet_, &clip_, &quad );
     }
 }
