@@ -32,8 +32,8 @@ Since I'm the only person working on this project right now, please just submit
 an issue if you're interested.
 
 
-For now I'll probably just find someone on fivver(https://www.fiverr.com) when
-I'm ready.
+For now I'll probably just find someone on [fivver](https://www.fiverr.com)
+when I'm ready.
 
 
 ==DEVELOPMENT LOG==============================================================
