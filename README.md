@@ -32,7 +32,19 @@ Since I'm the only person working on this project right now, please just submit
 an issue if you're interested.
 
 
+For now I'll probably just find someone on fivver(https://www.fiverr.com) when
+I'm ready.
+
+
 ==DEVELOPMENT LOG==============================================================
+
+
+(03/02/2019) Slowly getting back into working on this after moving overseas and
+starting a new job.  The necessity of having some sort of scripting built into
+this engine is starting to loom.  Although creating and incorporating my own
+scripting language sounds like a fun challenge, I've never really looked into
+using another pre-existing scripting language in my own programs, so this in
+itself may be a worthwile pursuit.
 
 
 (26/03/2018) Stepping away from the game for a bit to work on a map editor to
