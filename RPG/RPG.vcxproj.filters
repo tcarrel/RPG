@@ -422,6 +422,7 @@
       <Filter>Resource Files\Settings</Filter>
     </None>
     <None Include="..\packages\sdl2_mixer.2.0.0\lib\SDL2_mixer.dll" />
+    <None Include="Lua_Script.lua" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Graphics\henrietta.bmp">
@@ -463,5 +464,8 @@
     <Image Include="Graphics\tech_splash.png">
       <Filter>Resource Files\Splash Screens</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Lua535\lua53.lib" />
   </ItemGroup>
 </Project>

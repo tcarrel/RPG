@@ -14,7 +14,7 @@ class Play_Data;
 class Interface;
 
 struct SDL_Renderer;
-
+struct lua_State;
 
 
 /**
@@ -35,11 +35,13 @@ private:
 
     Start_SDL      sdl_init_;
 
+	lua_State*     Lua_;
+
     Console&       console_;
     Window&        window_;
     Event_Manager& events_;
 
-    Start_Screen      start_menu_;
+    Start_Screen   start_menu_;
     Combat         combat_;
     Game_Map       on_map_;
     Menu           menu_;

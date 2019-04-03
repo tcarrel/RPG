@@ -242,6 +242,7 @@
     <None Include="..\LICENSE.md" />
     <None Include="..\packages\sdl2_mixer.2.0.0\lib\SDL2_mixer.dll">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
     </None>
     <None Include="..\README.md" />
     <None Include="Graphics\character_sprite_template.xcf" />
@@ -252,6 +253,7 @@
     <None Include="Graphics\text_grayed.xcf" />
     <None Include="Graphics\text_highlight.xcf" />
     <None Include="Graphics\text_normal.xcf" />
+    <None Include="Lua_Script.lua" />
     <None Include="packages.config" />
     <None Include="Settings\controller.mapping.bin" />
   </ItemGroup>
@@ -269,6 +271,11 @@
     <Image Include="Graphics\text_grayed.png" />
     <Image Include="Graphics\text_highlight.png" />
     <Image Include="Graphics\text_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Lua535\lua53.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </Library>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

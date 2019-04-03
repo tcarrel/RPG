@@ -28,6 +28,9 @@ Game::Game( Console* c, Window* w, Event_Manager* e ) :
     over_( e, w, c ),
     save_load_( e, w, c )
 {
+	Lua_ = luaL_newstate();  //Init Lua.
+	luaL_openlibs( Lua_ );
+
     renderer_ = window_.get_renderer();
     text_system_ = new Text;
 
@@ -120,5 +123,22 @@ void Game::newgame( void )
 
 Game::~Game( void )
 {
+	/*
+	//std::string cmd = "a = 6 * 3 + math.sin(5)";
 
+	if ( check_lua( Lua_, luaL_dofile( Lua_, "Lua_Script.lua" ) ) )
+	{
+		lua_getglobal(Lua_, "a");
+		if (lua_isnumber(Lua_, -1))
+		{
+			float acpp = (float)lua_tonumber(Lua_, -1);
+			std::cout << "Lua says, \"6 * 3 + sin(5) is " << acpp << ".\"\n" << std::endl;
+		}
+	}
+	*/
+
+
+	// Shut Lua down.
+	lua_close(Lua_);
+	Lua_ = NULL;
 }

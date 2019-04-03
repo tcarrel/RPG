@@ -5,6 +5,8 @@
 #include<iostream>
 #include "stdafx.h"
 
+//#include "lua_.h"
+
 using namespace std;
 
 #undef main
@@ -25,7 +27,8 @@ int main( int argc, char* argv[] )
             }
         }
     }
-    Console console( verbose );
+
+	Console console( verbose );
     Window window;
     Event_Manager em( verbose ? &console : NULL );
     Game game( &console, &window, &em );

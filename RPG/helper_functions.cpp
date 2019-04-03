@@ -146,3 +146,17 @@ Cardinal_Directions_enum_t int_to_cardinal( int dir )
         return UP_LEFT;
     }
 }
+
+
+
+bool check_lua(lua_State* L, int r)
+{
+	if (r == LUA_OK)
+	{
+		return true;
+	}
+
+	string errmsg = lua_tostring(L, -1);
+	std::cerr << errmsg << "\n" << std::endl;
+	return false;
+}
