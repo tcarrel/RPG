@@ -35,6 +35,8 @@ public:
     static void vb_variable_value( string, string, Line_of_Text& );
     static void vb_variable_value( string, string, void* );
     static void vb_variable_value( string, string, SDL_Rect& );
+	static void vb_variable_value( string, string, string& );
+	static void current_interface( int );
     
     static void video_info( const SDL_DisplayMode& );
 

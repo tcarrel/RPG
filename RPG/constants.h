@@ -51,6 +51,8 @@ const int  JOY_DEAD_ZONE = 9000;
 #define START_SCREEN_BACKGROUND_IMAGE_FILENAME \
         "Graphics\\start_screen_image.png"
 
+#define MAP_FILENAME_MAX_LENGTH 20
+
 // Gameplay info. /////////////////////////////////////////////////////////////
 
 #define MAX_MONEY (99999999)
@@ -72,6 +74,7 @@ const int SCREEN_Y_TILES =
 
 // Character sprite sheet file paths. /////////////////////////////////////////
 
+#define SPRITE_SHEET__PATH "Graphics\\"
 #define SPRITE_SHEET__HENRIETTA__MASK_OFF "Graphics\\henrietta.bmp"
 
 // Enumerations. //////////////////////////////////////////////////////////////

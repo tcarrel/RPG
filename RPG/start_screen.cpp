@@ -67,6 +67,8 @@ Start_Screen::Start_Screen( Event_Manager* em, Window* w, Console* c ) :
 
 void Start_Screen::run( void )
 {
+	Console::current_interface( type() );
+
     needs_redraw_ = true;
     current_selection_ = 0;
     adjust_highlight();
@@ -114,7 +116,9 @@ void Start_Screen::add_state_machine_nodes( Load_Menu* slm )
 
 Interface_enum_t Start_Screen::picked( void )
 {
-    return next_;
+	Interface_enum_t out = next_;
+	next_ = type();
+    return out;
 }
 
 
@@ -233,6 +237,7 @@ void Start_Screen::select( void )
     default:
         return;
     }
+	Console::current_interface( type() );
 }
 
 

@@ -11,7 +11,8 @@ New_Game_Creation::New_Game_Creation(
     Console* c,
     Start_Screen* s ) :
     Interface( e, c, w, INTERFACE_NEW_GAME_SETUP ),
-    new_game_( new Play_Data )
+    new_game_( new Play_Data ),
+	next_(INTERFACE_START_MENU)
 {
     s->bg_image( background_, background_pos_ );
 }
@@ -25,20 +26,50 @@ Interface_enum_t New_Game_Creation::type( void )
 
 
 
+Interface_enum_t New_Game_Creation::get_next( void )
+{
+	return next_;
+}
+
+
+
 void New_Game_Creation::run( void )
 {
+	Console::current_interface( type() );
+
     exit_ = false;
 
     int step = 1;
+	char* curr_map = "map01.lvl";
 
     for( ; !( exit_ || em_->quit() ); em_->process( this ) )
     {
         switch( step )
         {
         case 1:
+			next_ = INTERFACE_START_MENU;
             character_name( &step );
+			Console::current_interface( type() );
+			
+			printf("XXXXXXXXXXXXXXXXXXXXX  %i  XXXXXXXXXXXXXXXXX\n", step );
+
             break;
-        case 2:
+		case 2:
+			Console::current_interface( type() );
+
+			step = 3;
+			break;
+		case 3:
+			new_game_->set_char_position( 5, 5 );
+			step = 4;
+			break;
+		case 4:
+			exit_ = true;
+			next_ = INTERFACE_MAP;
+			break;
+        case 5:
+			printf( "999999999999999999999999999999999999999999\n");
+			next_ = INTERFACE_START_MENU;
             exit_ = true;
             //TODO: maybe.
             break;

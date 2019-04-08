@@ -247,6 +247,7 @@
     <None Include="..\README.md" />
     <None Include="Graphics\character_sprite_template.xcf" />
     <None Include="Graphics\henrietta.xcf" />
+    <None Include="Graphics\mc_spritesheet.xcf" />
     <None Include="Graphics\start_screen_image.xcf" />
     <None Include="Graphics\terrain_tile_sheet_template.xcf" />
     <None Include="Graphics\test_terrain.xcf" />
@@ -254,12 +255,14 @@
     <None Include="Graphics\text_highlight.xcf" />
     <None Include="Graphics\text_normal.xcf" />
     <None Include="Lua_Script.lua" />
+    <None Include="map0.lvl" />
     <None Include="packages.config" />
     <None Include="Settings\controller.mapping.bin" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Graphics\henrietta.bmp" />
     <Image Include="Graphics\Icon.bmp" />
+    <Image Include="Graphics\mc_spritesheet.png" />
     <Image Include="Graphics\skin-colors-palette.jpg" />
     <Image Include="Graphics\splash1_test.bmp" />
     <Image Include="Graphics\splash1_test.png" />

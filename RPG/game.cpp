@@ -89,6 +89,7 @@ void Game::main_loop( void )
                 "Start_Screen",
                 "Work-In-Progress." );
             newgame();
+			//printf("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n");
             //play_data_ = newgame.ge
             break;
         case INTERFACE_LOAD_MENU:
@@ -101,13 +102,14 @@ void Game::main_loop( void )
             break;
         default:
             ;
-        }
-        if( play_data_ )
-        {
-            play_data_->debug_print();
-            //Begin game.
-        }
+        }   
     }
+	
+	if( play_data_ )
+	{
+		play_data_->debug_print();
+		//Begin game.
+	}
 }
 
 

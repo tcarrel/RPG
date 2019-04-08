@@ -12,7 +12,7 @@ Play_Data::Play_Data( void )
     Random random;
     random_seed_ = random.seed();
 
-    money_ = random.get( 500, 1500);
+    money_ = random.get( 1500, 1600);
 
     for( int i = 0; i < MAX_CHARACTER_NAME_LENGTH; i++ )
     {
@@ -71,6 +71,32 @@ void Play_Data::set_main_char_name( Name_Character& namer )
 }
 
 
+void Play_Data::set_current_map( char*& fn )
+{
+	for (int i = 0; i < MAP_FILENAME_MAX_LENGTH + 1; i++)
+	{
+		current_map_filename_[i] = 0;
+	}
+
+	for (int i = 0; i < MAP_FILENAME_MAX_LENGTH + 1; i++)
+	{
+		if( fn[i] == 0 )
+		{
+			break;
+		}
+		current_map_filename_[i] = fn[i];
+	}
+}
+
+
+
+void Play_Data::set_char_position( int x, int y )
+{
+	character_pos_[0] = x;
+	character_pos_[1] = y;
+}
+
+
 
 void Play_Data::debug_print( void )
 {
@@ -88,5 +114,11 @@ void Play_Data::debug_print( void )
         obj, "character_name_length\t\t", character_name_length_ );
     Console::vb_variable_value(
         obj, "character_name_storage_size_\t", character_name_storage_size_ );
+	Console::vb_variable_value(
+		obj, "current_map_filename_\t", string(current_map_filename_) );
+	Console::vb_variable_value(
+		obj, "character_pos_[X]\t\t", character_pos_[0] );
+	Console::vb_variable_value(
+		obj, "character_pos_[Y]\t\t", character_pos_[1] );
 #endif
 }

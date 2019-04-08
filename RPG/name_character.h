@@ -25,6 +25,8 @@ public:
         int*,
         bool = false );
 
+	Interface_enum_t type( void );
+
     void run( void );
     char* get_name( void );
     void copy_name( char*, int& );

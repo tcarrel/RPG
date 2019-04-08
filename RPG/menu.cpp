@@ -55,6 +55,8 @@ void Menu::init( Play_Data* pd )
 
 void Menu::run( void )
 {
+	Console::current_interface( type() );
+
     reset();
 
     Interface* temp = NULL;

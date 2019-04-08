@@ -36,6 +36,8 @@ void Pause::init( Text* t )
 */
 void Pause::run( void )
 {
+	Console::current_interface( type() );
+
     screen_image_.update();
     exit_ = false;
 

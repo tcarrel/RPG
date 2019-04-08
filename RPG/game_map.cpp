@@ -9,15 +9,19 @@
 
 Game_Map::Game_Map( Event_Manager* em, Window* w, Console* c ) :
     Interface( em, c, w, INTERFACE_MAP )
-{}
+{
+	run();
+}
 
 
 
 void Game_Map::run( void )
 {
+	Console::current_interface( type() );
+
     for( ; !( exit_ || em_->quit() ); em_->process( this ) )
     {
-
+		exit_ = true;
     }
 }
 

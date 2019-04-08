@@ -131,6 +131,12 @@ void Console::vb_variable_value( string object, string var, bool value)
         return;
     }
 
+	if( !val_previous_ )
+	{
+		printf( "(%u)\n\tVariable Values:\n", message_num_++ );
+		val_previous_ = true;
+	}
+
     vb_variable_value( "bool", object, var, value ? "true" : "false" );
 }
 
@@ -142,6 +148,12 @@ void Console::vb_variable_value( string object, string var, bool value)
     {
         return;
     }
+
+	if( !val_previous_ )
+	{
+		printf( "(%u)\n\tVariable Values:\n", message_num_++ );
+		val_previous_ = true;
+	}
 
     char str[ 33 ];
     snprintf( str, 33, "%u // 0x%x", value, value );
@@ -156,6 +168,12 @@ void Console::vb_variable_value( string object, string var, bool value)
     {
         return;
     }
+
+	if( !val_previous_ )
+	{
+		printf( "(%u)\n\tVariable Values:\n", message_num_++ );
+		val_previous_ = true;
+	}
 
     char str[ 33 ];
     snprintf( str, 33, "%i // 0x%x", value, value );
@@ -192,6 +210,12 @@ void Console::vb_variable_value( string object, string var, bool value)
         return;
     }
 
+	if( !val_previous_ )
+	{
+		printf( "(%u)\n\tVariable Values:\n", message_num_++ );
+		val_previous_ = true;
+	}
+
     char str[ 33 ];
     snprintf( str, 33, "%f // 0x%x", val, *(int*)&val );
     vb_variable_value( "int", object, var, str );
@@ -208,10 +232,40 @@ void Console::vb_variable_value( string object, string var, bool value)
         return;
     }
 
+	if( !val_previous_ )
+	{
+		printf( "(%u)\n\tVariable Values:\n", message_num_++ );
+		val_previous_ = true;
+	}
+
     printf( "\t      \tUint8_t_String %s::%s = %s\n",
             object.c_str(),
             var.c_str(),
             str.c_str() );
+}
+
+
+
+/*static*/ void Console::vb_variable_value(
+	string object,
+	string var,
+	string& str )
+{
+	if( !verbose )
+	{
+		return;
+	}
+
+	if( !val_previous_ )
+	{
+		printf( "(%u)\n\tVariable Values:\n", message_num_++ );
+		val_previous_ = true;
+	}
+
+	printf( "\t      \tstd::string %s::%s = %s\n",
+		object.c_str(),
+		var.c_str(),
+		str.c_str() );
 }
 
 
@@ -287,6 +341,76 @@ void Console::vb_variable_value( string obj, string name, Line_of_Text& line )
         "\t      \t%s %s::%s = %s\n",
         type.c_str(), o.c_str(), v.c_str(), c );
 }
+
+
+
+/*static*/ void Console::current_interface( int ix )
+{
+	if( !verbose_ )
+	{
+		return;
+	}
+
+#ifdef _DEBUG
+	if( val_previous_ )
+	{
+		hline();
+		val_previous_ = false;
+	}
+#endif
+	printf(
+		"(%u)\n"
+		"\tMessage: CURRENT INTERFACE\n",
+		message_num_++
+	);
+
+	printf("\t      \t");
+	switch( ix )
+	{
+		case INTERFACE_START_MENU:
+			printf("Start Menu");
+			break;
+		case INTERFACE_MAP:
+			printf("Map");
+			break;
+		case INTERFACE_PAUSE:
+			printf("Pause");
+			break;
+		case INTERFACE_COMBAT:
+			printf("Combat");
+		case INTERFACE_MENU:
+			printf("Menu Screen");
+			break;
+		case INTERFACE_ITEM:
+			printf("Shopping");
+			break;
+		case INTERFACE_GAME_OVER:
+			printf("Game Over Screen");
+			break;
+		case INTERFACE_LOAD_MENU:
+			printf("Load Game");
+			break;
+		case INTERFACE_SAVE_MENU:
+			printf("Save Game");
+			break;
+		case INTERFACE_SETTINGS:
+			printf("Game Setttings");
+			break;
+		case INTERFACE_NEW_GAME_SETUP:
+			printf("New Game");
+			break;
+		case INTERFACE_CONFIRM_QUIT:
+			printf("Quit?");
+			break;
+		case INTERFACE_CHARACTER_NAMING:
+			printf("Name Character");
+			break;
+		default:
+			printf("Unknown Interface");
+	}
+	printf( "\n\n" );
+	hline();
+}
 #else
 
 /*static*/ void Console::vb_variable_value( string, string, bool ) {}
@@ -297,6 +421,7 @@ void Console::vb_variable_value( string obj, string name, Line_of_Text& line )
 /*static*/ void Console::vb_variable_value( string, string, SDL_Rect& ) {}
 /*static*/ void Console::vb_variable_value( string, string, void* ) {}
 /*static*/ void Console::vb_variable_value( string, string&, string&, char* ) {}
+/*static*/ void Console::vb_variable_value( string, string, string& ) {}
 #endif
 
 

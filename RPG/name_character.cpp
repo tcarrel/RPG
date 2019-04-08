@@ -312,8 +312,16 @@ void Name_Character::blink_cursor( void )
 
 
 
+Interface_enum_t Name_Character::type( void )
+{
+	return INTERFACE_CHARACTER_NAMING;
+}
+
+
+
 void Name_Character::run( void )
 {
+	Console::current_interface( type() );
 
     for( ; !( exit_ || em_->quit() ); em_->process( this ) )
     {
@@ -550,6 +558,7 @@ void Name_Character::select( void )
     switch( cursor_ )
     {
     case LTR_exit:
+		//TODO: Fix this.  Does not return to Start Menu as it should.
         cancel();
         return;
     case LTR_clear:
@@ -612,7 +621,7 @@ void Name_Character::del( bool back )
 
 void Name_Character::cancel( void )
 {
-    *step_ = 0;
+    *step_ = 5;
     exit_ = true;
 }
 

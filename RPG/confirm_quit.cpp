@@ -41,6 +41,8 @@ Confirm_Quit::Confirm_Quit(
 
 void Confirm_Quit::run( void )
 {
+	Console::current_interface( type() );
+
     screen_image_.update();
     exit_ = false;
 

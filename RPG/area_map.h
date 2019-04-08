@@ -1,5 +1,6 @@
 #pragma once
 
+class Random;
 class Sprite;
 class Uint8_t_String;
 
@@ -9,7 +10,7 @@ class Uint8_t_String;
 class Area_Map
 {
 public:
-    Area_Map( int, int, int, const Uint8_t_String& );
+	Area_Map( std::string& );
 
     const Uint8_t_String& get_name( void );
 
@@ -20,7 +21,11 @@ public:
     static const int MAX_HEIGHT;
 
 private:
-    Sprite* tiles_;
+
+	//int setup(int, int, int, const Uint8_t_String&);
+
+    Sprite        tiles_[16 * 16]; //256
+	Sprite_Sheet* sheet_;
 
     static unsigned unassigned_id_;
     unsigned id_;

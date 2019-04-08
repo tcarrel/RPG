@@ -127,6 +127,15 @@
     <Filter Include="Resource Files\Graphics\Actors">
       <UniqueIdentifier>{8868073c-0519-4519-b60f-0d6770d16ff9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Level Maps">
+      <UniqueIdentifier>{f65feb05-09ab-4702-bf91-33e5a4d87d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces\Types\InGame">
+      <UniqueIdentifier>{a128237b-522f-4441-90e4-d15262485898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Types\InGame">
+      <UniqueIdentifier>{df9e62ba-9001-417c-9abe-ffeda751ff74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Settings\gamecontrollerdb.txt">
@@ -251,9 +260,6 @@
     <ClInclude Include="combat.h">
       <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
     </ClInclude>
-    <ClInclude Include="game_map.h">
-      <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
-    </ClInclude>
     <ClInclude Include="game_over.h">
       <Filter>Header Files\Interfaces\Types\ZZZ TODO</Filter>
     </ClInclude>
@@ -268,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="SDL_mixer.h">
       <Filter>Header Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="game_map.h">
+      <Filter>Header Files\Interfaces\Types\InGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -367,9 +376,6 @@
     <ClCompile Include="combat.cpp">
       <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
     </ClCompile>
-    <ClCompile Include="game_map.cpp">
-      <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
-    </ClCompile>
     <ClCompile Include="game_over.cpp">
       <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
     </ClCompile>
@@ -384,6 +390,9 @@
     </ClCompile>
     <ClCompile Include="settings_menu.cpp">
       <Filter>Source Files\Interfaces\Types\ZZZ TODO</Filter>
+    </ClCompile>
+    <ClCompile Include="game_map.cpp">
+      <Filter>Source Files\Interfaces\Types\InGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -423,6 +432,12 @@
     </None>
     <None Include="..\packages\sdl2_mixer.2.0.0\lib\SDL2_mixer.dll" />
     <None Include="Lua_Script.lua" />
+    <None Include="Graphics\mc_spritesheet.xcf">
+      <Filter>Resource Files\Graphics\Actors</Filter>
+    </None>
+    <None Include="map0.lvl">
+      <Filter>Resource Files\Level Maps</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Graphics\henrietta.bmp">
@@ -463,6 +478,9 @@
     </Image>
     <Image Include="Graphics\tech_splash.png">
       <Filter>Resource Files\Splash Screens</Filter>
+    </Image>
+    <Image Include="Graphics\mc_spritesheet.png">
+      <Filter>Resource Files\Graphics\Actors</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

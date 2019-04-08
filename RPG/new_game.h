@@ -22,6 +22,7 @@ public:
 
     void run( void );
     Play_Data* get_game( void );
+	Interface_enum_t get_next( void );
 
     ~New_Game_Creation( void );
 
@@ -36,4 +37,6 @@ private:
     
     SDL_Texture* background_;
     SDL_Rect     background_pos_;
+
+	Interface_enum_t next_;
 };
